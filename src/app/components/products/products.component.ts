@@ -16,7 +16,7 @@ import { ProductsService } from '../../services/products.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent  {
   myShoppingCart: Product[] = [];
   total = 0;
   @Input() products:Product[]=[];
@@ -36,12 +36,12 @@ export class ProductsComponent implements OnInit {
     this.myShoppingCart = this.storeService.getShoppingCart();
   }
 
-  ngOnInit(): void {
-    this.productsService.getAll(10, 0).subscribe((data) => {
-      this.products = data;
-      this.offset += this.limit;
-    });
-  }
+  // ngOnInit(): void {
+  //   this.productsService.getAll(10, 0).subscribe((data) => {
+  //     this.products = data;
+  //     this.offset += this.limit;
+  //   });
+  // }
 
   onAddToShoppingCart(product: Product) {
     this.storeService.addProduct(product);
